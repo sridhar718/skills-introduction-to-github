@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>user page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	<link rel="stylesheet" href="http://127.0.0.1:5000/static/style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        body{
+            background-image: url('https://th.bing.com/th/id/OIP.Wt1ZHFLcVlRv_iOJgDEBNAHaE7?w=273&h=182&c=7&r=0&o=5&pid=1.7');
+            background-repeat: no-repeat;
+            background-size: 100% 100vh;
+            background-attachment: fixed;
+        }
+        .Title{
+            color: white;
+            font-size: 45px;
+            font-weight: bold;
+        }
+		.container{
+			padding: 0 10%;
+		}
+		.Form{
+			background-color: white;
+			padding: 5%;
+			margin-top: 25px;
+		}
+		.Form h3{
+			text-align: center;
+			border-bottom: 1px solid #ddd;
+			margin-bottom: 30px;
+		}
+		.navbar{
+			background-color: white;
+		}
+    </style>
+	</head>
+	<body>
+		<nav class="navbar">
+			<div class="container-fluid">
+				<ul class="nav navbar-nav">
+					<li><a href="/home"> TASK MANANGEMENT</a></li>
+				  </ul>
+			  <ul class="nav navbar-nav navbar-right">
+				<li><a href="/view"><span class="glyphicon glyphicon-log-out"></span> VIEW</a></li>
+				<li><a href="/addpage"><span class="glyphicon glyphicon-log-out"></span> ADD</a></li>
+				<li><a href="/home"><span class="glyphicon glyphicon-log-out"></span> LOGOUT</a></li>
+			  </ul>
+			</div>
+		  </nav>
+
+		  <div class="container">
+			{% if msg %}
+			<div class="alert alert-info alert-dismissible">
+				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				<strong>Info!</strong> {{ msg }}
+			  </div>
+			{% endif %}
+		</div>
+
+	<section class="ftco-section">
+		<div class="container">
+			<div class="Form">
+				<div class="row">
+					<div class="col-lg-12">
+						<h3>MEMBER DETAILS</h3>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-6">
+						<form action="/update" method="post">
+						<div class="form-group mb-3">
+							<label class="label" for="name">Member name</label>
+							<select name="name" class="form-control" id="" required>
+								<option value="{{data[0]}}">{{data[0]}}</option>
+								{% for row in result %}
+								<option value="{{row[0]}}">{{row[0]}}</option>
+								{% endfor %}
+							</select>
+						</div>
+						<div class="form-group mb-3">
+							<label class="label" for="project">Project</label>
+							<select name="project" class="form-control" id="" required>
+								<option value="{{data[1]}}">{{data[1]}}</option>
+								{% for row in result %}
+								<option value="{{row[1]}}">{{row[1]}}</option>
+								{% endfor %}
+							</select>
+						</div>
+						<div class="form-group mb-3">
+							<label class="label" for="taskid">Task id</label>
+							<input type="number" class="form-control" placeholder="Enter task id" name="taskid" value="{{data[2]}}" required>
+						</div>
+						<div class="form-group mb-3">
+							<label class="label" for="status">Status</label>
+							<select name="status" class="form-control" id="" required>
+								<option value="{{data[3]}}">{{data[3]}}</option>
+								<option value="Discussion">Discussion</option>
+								<option value="WIP">WIP</option>
+								<option value="Meeting">Meeting</option>
+								<option value="Completed">Completed</option>
+								<option value="On Hold">On Hold</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-lg-6">
+						<div class="form-group mb-3">
+							<label class="label" for="date">Date</label>
+							<input type="date" class="form-control" name="date" value="{{data[4]}}" required>
+						</div>
+						<div class="form-group mb-3">
+							<label class="label" for="desc">Description</label>
+							<input type="text" class="form-control" placeholder="Enter description" value="{{data[5]}}" name="desc" required>
+						</div>
+						<div class="form-group mb-3">
+							<label class="label" for="remarks">Remarks</label>
+							<input type="text" class="form-control" placeholder="Enter remarks" value="{{data[6]}}" name="remarks" required>
+						</div>
+						<div class="form-group">
+							<label for="">&nbsp;</label>
+							<button type="submit" class="form-control btn btn-primary rounded submit px-3">Submit</button>
+						</div>
+						</form>
+					</div>
+				</div>
+					
+			</div>		
+		</div>
+	</section>
+	</body>
+</html>
+

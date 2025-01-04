@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>home page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	<link rel="stylesheet" href="http://127.0.0.1:5000/static/style.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <style>
+        body{
+            background-image: url('https://th.bing.com/th/id/OIP.Wt1ZHFLcVlRv_iOJgDEBNAHaE7?w=273&h=182&c=7&r=0&o=5&pid=1.7');
+            background-repeat: no-repeat;
+            background-size: 100% 100vh;
+            background-attachment: fixed;
+        }
+        .Title{
+            color: white;
+            font-size: 50px;
+            font-weight: bold;
+        }
+        .navbar{
+			background-color: white;
+            margin-bottom: 100px;
+		}
+    </style>
+	</head>
+	<body>
+        <nav class="navbar">
+			<div class="container-fluid">
+				<ul class="nav navbar-nav">
+					<li><a href="/home"> TASK MANANGEMENT</a></li>
+				  </ul>
+			  <ul class="nav navbar-nav navbar-right">
+				<li><a href="/home"><span class="glyphicon glyphicon-log-out"></span> HOME</a></li>
+			  </ul>
+			</div>
+		  </nav>
+
+	<div class="container">
+		{% if msg %}
+		<div class="alert alert-info alert-dismissible">
+			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			<strong>Info!</strong> {{ msg }}
+		  </div>
+		{% endif %}
+	</div>
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-12 col-lg-10">
+					<div class="wrap d-md-flex">
+						<div class="img" style="background-image: url('https://th.bing.com/th/id/OIP.jnVG8iyv2wNyZKFrZoaTZwHaE7?w=302&h=201&c=7&r=0&o=5&pid=1.7');">
+			      </div>
+						<div class="login-wrap p-4 p-md-5">
+			      	<div class="d-flex">
+			      		<div class="w-100">
+			      			<h3 class="mb-4">Sign In</h3>
+			      		</div>
+			      	</div>
+					<form action="/signin" method="post" class="signin-form">
+			      		<div class="form-group mb-3">
+			      			<label class="label" for="name">Username</label>
+			      			<input type="text" class="form-control" placeholder="Username" name="username" required>
+			      		</div>
+                        <div class="form-group mb-3">
+                            <label class="label" for="password">Password</label>
+                        <input type="password" class="form-control" placeholder="Password" name="password" required>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="form-control btn btn-primary rounded submit px-3">Sign In</button>
+                        </div>
+		            
+		          </form>
+		        </div>
+		      </div>
+				</div>
+			</div>
+		</div>
+	</section>
+	</body>
+</html>
+
